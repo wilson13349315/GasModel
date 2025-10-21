@@ -41,7 +41,7 @@ export default function HousePage() {
         return
       }
 
-      const grouped: Record<string, number[]> = (rows ?? []).reduce((acc: Record<string, number[]>, row: any) => {
+      const grouped: Record<string, number[]> = (rows ?? []).reduce((acc: Record<string, number[]>, row: { location?: string; "Price (in rupees)": number | string | null }) => {
         const loc = row?.location as string | undefined
         const raw = row?.["Price (in rupees)"] as number | string | null | undefined
         const num = typeof raw === "number" ? raw : raw != null ? Number(String(raw).replace(/[^\d.-]/g, "")) : NaN
