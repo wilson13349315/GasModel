@@ -34,21 +34,3 @@ export default async function ProtectedPage() {
     </div>
   );
 }
-
-
-{/* === Add this section === */}
-<div className="mt-10 flex gap-4">
-  <button
-    onClick={() => window.location.href = "/house"}
-    className="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition"
-  >
-    Go to House
-  </button>
-
-  <button
-    onClick={() => window.location.href = "/music"}
-    className="bg-green-600 text-white px-6 py-3 rounded-xl hover:bg-green-700 transition"
-  >
-    Go to Music
-  </button>
-</div>
