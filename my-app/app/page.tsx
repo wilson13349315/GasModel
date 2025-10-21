@@ -20,9 +20,6 @@ export default function Home() {
               <Link href={"/house"} className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
                 House Analytics
               </Link>
-              <Link href={"/music"} className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
-                Music Analytics
-              </Link>
               <div className="flex items-center gap-2">
                 <DeployButton />
               </div>
