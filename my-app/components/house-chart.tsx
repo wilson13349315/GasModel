@@ -4,8 +4,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 
 interface LocationData {
   location: string;
-  average_price: number;
-  count: number;
+  avg_price: number;
 }
 
 interface HouseChartProps {
@@ -58,7 +57,7 @@ export function HouseChart({ data }: HouseChartProps) {
                   fontSize: '12px'
                 }}
               />
-              <Bar dataKey="average_price" fill="#8884d8" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="avg_price" fill="#8884d8" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -77,10 +76,10 @@ export function HouseChart({ data }: HouseChartProps) {
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={({ location, average_price }) => `${location}: $${(average_price / 1000).toFixed(0)}k`}
+                label={({ location, avg_price }) => `${location}: $${(avg_price / 1000).toFixed(0)}k`}
                 outerRadius={80}
                 fill="#8884d8"
-                dataKey="average_price"
+                dataKey="avg_price"
               >
                 {data.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -106,7 +105,7 @@ export function HouseChart({ data }: HouseChartProps) {
         <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
           <h4 className="font-semibold text-blue-900 dark:text-blue-100">Highest Price</h4>
           <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-            ${data[0]?.average_price.toLocaleString() || 0}
+            ${data[0]?.avg_price.toLocaleString() || 0}
           </p>
           <p className="text-sm text-blue-700 dark:text-blue-300">
             {data[0]?.location || 'N/A'}
@@ -114,19 +113,19 @@ export function HouseChart({ data }: HouseChartProps) {
         </div>
         
         <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
-          <h4 className="font-semibold text-green-900 dark:text-green-100">Total Properties</h4>
+          <h4 className="font-semibold text-green-900 dark:text-green-100">Total Locations</h4>
           <p className="text-2xl font-bold text-green-600 dark:text-green-400">
-            {data.reduce((sum, item) => sum + item.count, 0)}
+            {data.length}
           </p>
           <p className="text-sm text-green-700 dark:text-green-300">
-            Across all locations
+            Top locations shown
           </p>
         </div>
         
         <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg">
           <h4 className="font-semibold text-purple-900 dark:text-purple-100">Average Price</h4>
           <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">
-            ${Math.round(data.reduce((sum, item) => sum + item.average_price, 0) / data.length).toLocaleString()}
+            ${Math.round(data.reduce((sum, item) => sum + item.avg_price, 0) / data.length).toLocaleString()}
           </p>
           <p className="text-sm text-purple-700 dark:text-purple-300">
             Across top locations
